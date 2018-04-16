@@ -1,4 +1,8 @@
-package ClientSide;
+package edu.umn.SDFS.ClientSide;
+
+/**
+ * Created by mouba005 on 4/16/18.
+ */
 
 /**
  * Created by mouba005 on 4/16/18.
@@ -39,3 +43,4 @@ public class Client implements Comparable <Client>{
         else return this.port - other.port;
     }
 }
+

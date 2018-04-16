@@ -1,6 +1,10 @@
-package ServerSide;
+package edu.umn.SDFS.ServerSide;
 
-import ClientSide.Client;
+/**
+ * Created by mouba005 on 4/16/18.
+ */
+
+import edu.umn.SDFS.ClientSide.Client;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -46,3 +50,4 @@ public class ServerDB {
         else return null;
     }
 }
+
