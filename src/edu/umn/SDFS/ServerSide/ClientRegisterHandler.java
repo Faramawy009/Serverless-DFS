@@ -14,9 +14,6 @@ public class ClientRegisterHandler implements Runnable{
      * registerMsg is of the form ip;socket;f1,f2,f3....
      */
     private String registerMsg;
-    private Client client;
-    private String[] files;
-    private String response;
 
     public ClientRegisterHandler(String registerMsg) {
         this.registerMsg = registerMsg;
@@ -26,13 +23,14 @@ public class ClientRegisterHandler implements Runnable{
     public void run() {
         String[] msgElements = registerMsg.split(";");
         if (msgElements.length != 3) {
-            response = new String("invalid registration message");
+            System.out.println("invalid registration msg!");
             return;
         }
-        client.setIp(msgElements[0]);
-        client.setPort(Integer.parseInt(msgElements[1]));
-        files = msgElements[2].split(",");
-        response = "registered";
+        Client client = new Client(msgElements[0], Integer.parseInt(msgElements[1]));
+        String[] files  = msgElements[2].split(",");
+        for (int i=0; i < files.length; i++){
+            ServerDB.insert(files[i], client);
+        }
     }
 }
 

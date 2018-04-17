@@ -4,10 +4,12 @@ package edu.umn.SDFS.ClientSide;
  * Created by mouba005 on 4/16/18.
  */
 
+import java.util.Objects;
+
 /**
  * Created by mouba005 on 4/16/18.
  */
-public class Client implements Comparable <Client>{
+public class Client{
     private String ip;
     private int port;
 
@@ -37,10 +39,15 @@ public class Client implements Comparable <Client>{
     }
 
     @Override
-    public int compareTo(Client other) {
-        if (this.ip.equals(other.ip) && this.port == other.port)
-            return 0;
-        else return this.port - other.port;
+    public boolean equals(Object other) {
+        Client c = (Client) other;
+        return (this.ip.equals(c.ip) && this.port == c.port);
     }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(ip, port);
+    }
+
 }
 
