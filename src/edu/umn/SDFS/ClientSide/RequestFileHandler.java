@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import static edu.umn.SDFS.ClientSide.ClientMain.homeFolder;
 import static java.lang.Math.toIntExact;
 
 /**
@@ -12,101 +13,76 @@ import static java.lang.Math.toIntExact;
  */
 public class RequestFileHandler implements Runnable{
     private ArrayList<Client> ownerClients;
-//    private ArrayList<Integer> ownerPorts;
     private String fileName;
-    // make sure the arrays are send using new (will not be removed from stack after initialization)
     public RequestFileHandler(ArrayList<Client> ownerClients,  String fileName) {
         this.ownerClients = ownerClients;
         this.fileName = fileName;
+        for(Client c : ownerClients)
+            System.out.println(c);
     }
 
     @Override
     public void run() {
+        if (ownerClients.contains(new Client(ClientMain.myIp, ClientMain.myPort))){
+            System.out.println("local copy of the file "+this.fileName+" exists");
+            return;
+        }
         int fileSize = 0;
-        File file = new File(fileName);
         if (ownerClients.size() < 1){
             System.out.println("No owners for this file "+ fileName);
             return;
         }
-        int currentOwnerIdx = 0;
-        do {
+
+        for(int currentOwnerIdx = 0; currentOwnerIdx<ownerClients.size(); currentOwnerIdx++) {
             String ownerIp = ownerClients.get(currentOwnerIdx).getIp();
             int ownerPort = ownerClients.get(currentOwnerIdx).getPort();
-            // get a socket ready to receive the requested file from peer
             OutputStream outFile = null;
+            Socket clientSocket = null;
 
             try {
-                Socket clientSocket = new Socket(ownerIp, ownerPort);
+                clientSocket = new Socket(ownerIp, ownerPort);
                 OutputStream outToServer = clientSocket.getOutputStream();
                 DataOutputStream out = new DataOutputStream(outToServer);
 
                 out.writeUTF(fileName);
 
+            } catch (Exception e) {
+                System.out.println("peer "+ownerPort+" offline, retrying to get  the file: " + fileName + " from next owner in 2 seconds...");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                new Thread(new RemoveClientSender(ownerIp, ownerPort)).start();
+                continue;
+            }
+            DownloadObject downloadObject = null;
+            try {
                 ObjectInputStream inFromServer = new ObjectInputStream(clientSocket.getInputStream());
-                DownloadObject downloadObject = (DownloadObject)inFromServer.readObject();
+                downloadObject = (DownloadObject) inFromServer.readObject();
                 fileSize = toIntExact(downloadObject.checkSum);
-                outFile.write(downloadObject.file, 0, fileSize);
-                //Received Download Object from serving peer.
-//                DataInputStream in = new DataInputStream(inFromServer);
-//                outFile = new FileOutputStream(fileName, true);
-//                fileSize = in.readLong();
-//                byte[] bytes = new byte[4096];
-//                int count;
-//                while ((count = in.read(bytes)) > 0) {
-//                    outFile.write(bytes, 0, count);
-//                }
-//                in.close();
-                outFile.close();
+
                 clientSocket.close();
-
-
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            //If file is not corrupted, end the loop.
+            File file = new File(homeFolder + "/" + fileName);
+            try {
+                outFile = new FileOutputStream(file);
+                outFile.write(downloadObject.file, 0, fileSize);
+                outFile.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-//            try {
-//                Socket sendReqSocket = new Socket(ownerIp, ownerPort);
-//                String requestBody = new String(recvIp + ";" + Integer.toString(recvPort) + ";" + fileName);
-//                DataOutputStream bodyOut = new DataOutputStream(sendReqSocket.getOutputStream());
-//                bodyOut.writeUTF(requestBody);
-//                sendReqSocket.close();
-//                bodyOut.close();
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-
-//            //new receive the file on the receive socket
-//            Socket socket = null;
-//            DataInputStream in = null;
-//            OutputStream out = null;
-//            try {
-//                if (!file.createNewFile()) {
-//                    System.out.println("failed to create " + fileName);
-//                    return;
-//                }
-//                socket = recvSocket.accept();
-//                in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-//                // true to append
-//                out = new FileOutputStream(fileName, true);
-//                fileSize = in.readLong();
-//                byte[] bytes = new byte[4096];
-//                int count;
-//                while ((count = in.read(bytes)) > 0) {
-//                    out.write(bytes, 0, count);
-//                }
-//                in.close();
-//                out.close();
-//                socket.close();
-//                recvSocket.close();
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-            currentOwnerIdx = (currentOwnerIdx+1) % ownerClients.size();
-        // check if file is corrupted
-        } while (file.length() != fileSize);
-
+            if (file.length() == fileSize)
+            {
+                System.out.println("File " + fileName + " Was received successfully from owner " + ownerPort);
+                return;
+            }
+        }
+        System.out.println("Failed to receive  " + fileName );
 
     }
 }

@@ -4,12 +4,13 @@ package edu.umn.SDFS.ClientSide;
  * Created by mouba005 on 4/16/18.
  */
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Created by mouba005 on 4/16/18.
  */
-public class Client{
+public class Client implements Serializable{
     private String ip;
     private int port;
 
@@ -36,6 +37,11 @@ public class Client{
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    @Override
+    public String toString(){
+        return (ip+":"+port);
     }
 
     @Override

@@ -11,6 +11,9 @@ import java.util.ArrayList;
 
 /**
  * Created by mouba005 on 4/16/18.
+ *
+ * This class sends a registration request to the tracking server from the client
+ * When the client starts, this request contains all the files that the client has
  */
 public class RegisterRequest {
     String serverIp;
@@ -27,7 +30,7 @@ public class RegisterRequest {
         this.fileNames = fileNames;
     }
 
-    public void register(){
+    public void register() throws Exception{
         StringBuilder registerMsg = new StringBuilder();
         registerMsg.append(clientIp+";"+Integer.toString(clientPort)+";");
         for(String fileName : fileNames){
@@ -36,15 +39,35 @@ public class RegisterRequest {
         // delete extra ","
         registerMsg.deleteCharAt(registerMsg.length()-1);
 
-        try {
-            Socket socket = new Socket(serverIp, serverPort);
-            OutputStream outToServer = socket.getOutputStream();
-            DataOutputStream out = new DataOutputStream(outToServer);
-            out.writeUTF(registerMsg.toString());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Socket socket = null;
+        boolean dataArrived;
+        do{
+            dataArrived = true;
+            try {
+                socket = new Socket(serverIp, serverPort);
+                OutputStream outToServer = socket.getOutputStream();
+                DataOutputStream out = new DataOutputStream(outToServer);
+                out.writeUTF(registerMsg.toString());
+            } catch (Exception e) {
+                dataArrived = false;
+                System.out.println("Server offline, retrying to register again in 5 seconds...");
+                Thread.sleep(5000);
+            }
+
+        } while(!dataArrived);
+        socket.close();
+
+
+//        try {
+//            Socket socket = new Socket(serverIp, serverPort);
+//            OutputStream outToServer = socket.getOutputStream();
+//            DataOutputStream out = new DataOutputStream(outToServer);
+//            out.writeUTF(registerMsg.toString());
+//            socket.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }
 

@@ -1,9 +1,11 @@
 package edu.umn.SDFS.ClientSide;
 
+import java.io.Serializable;
+
 /**
  * Created by mouba005 on 4/17/18.
  */
-public class DownloadObject {
+public class DownloadObject implements Serializable {
     public long checkSum;
     public byte [] file;
 

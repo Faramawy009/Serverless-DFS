@@ -9,15 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static edu.umn.SDFS.ClientSide.ClientMain.homeFolder;
 import static java.lang.Math.toIntExact;
 
 /**
  * Created by elfar009 on 4/16/18.
  */
 public class SendFileHandler implements Runnable{
-//    private String filePath;
-//    private String ip;
-//    private int port;
     private Socket clientSocket;
     public SendFileHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -37,8 +35,7 @@ public class SendFileHandler implements Runnable{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Path path = Paths.get(filePath);
+        Path path = Paths.get(homeFolder + "/" + filePath);
         File file = path.toFile();
         if (!file.exists()){
             System.out.println("requested file doesn't exist!");
@@ -55,6 +52,7 @@ public class SendFileHandler implements Runnable{
         try {
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
             objectOutput.writeObject(downloadObject);
+            System.out.println("File " + filePath + " Was sent successfully to client of port " +clientSocket.getLocalPort());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -64,29 +62,5 @@ public class SendFileHandler implements Runnable{
                 e.printStackTrace();
             }
         }
-//        Socket socket = null;
-//        DataOutputStream out = null;
-//        InputStream in = null;
-//
-//        try {
-//            socket = new Socket(ip, port);
-//            out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-//            in = new FileInputStream(file);
-//            // send file size first
-//            out.writeLong(fileSize);
-//            //out.writeUTF(";");
-//            out.flush();
-//            int count;
-//            while((count = in.read(buffer)) > 0){
-//                out.write(buffer, 0, count);
-//            }
-//
-//            in.close();
-//            out.close();
-//            socket.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
     }
 }
