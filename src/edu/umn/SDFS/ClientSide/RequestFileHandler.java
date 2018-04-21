@@ -1,11 +1,17 @@
 package edu.umn.SDFS.ClientSide;
 
+import edu.umn.SDFS.ServerSide.ServerMain;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import static edu.umn.SDFS.ClientSide.ClientMain.homeFolder;
+import static edu.umn.SDFS.ClientSide.ClientMain.peers;
+import static edu.umn.SDFS.ClientSide.ClientMain.serverIp;
 import static java.lang.Math.toIntExact;
 
 /**
@@ -33,11 +39,46 @@ public class RequestFileHandler implements Runnable{
             return;
         }
 
-        for(int currentOwnerIdx = 0; currentOwnerIdx<ownerClients.size(); currentOwnerIdx++) {
-            String ownerIp = ownerClients.get(currentOwnerIdx).getIp();
-            int ownerPort = ownerClients.get(currentOwnerIdx).getPort();
+        HashSet<Client> hashedOwners = new HashSet<>(ownerClients);
+        boolean firstRound = true;
+
+//        for(int currentOwnerIdx = 0; currentOwnerIdx<ownerClients.size(); currentOwnerIdx++) {
+        for(int currentOwnerIdx = 0; currentOwnerIdx < peers.size(); currentOwnerIdx++){
+            if (!hashedOwners.contains(peers.get(currentOwnerIdx))) {
+                if (currentOwnerIdx == peers.size() - 1) {
+                    currentOwnerIdx = 0;
+                    firstRound = false;
+                }
+                continue;
+            }
+            String ownerIp = peers.get(currentOwnerIdx).getIp();
+            int ownerPort = peers.get(currentOwnerIdx).getPort();
             OutputStream outFile = null;
             Socket clientSocket = null;
+            if (firstRound) {
+                try {
+                    clientSocket = new Socket(ownerIp, ownerPort);
+                    OutputStream outToServer = clientSocket.getOutputStream();
+                    DataOutputStream out = new DataOutputStream(outToServer);
+                    out.writeUTF("getLoad");
+                    DataInputStream in = new DataInputStream(clientSocket.getInputStream());
+                    String loadMsg = in.readUTF();
+                    clientSocket.close();
+                    int peerLoad = Integer.parseInt(loadMsg);
+                    System.out.println("Load of the peer " + ownerPort + " is " + peerLoad);
+                    if (peerLoad > 2) {
+                        if(currentOwnerIdx == peers.size()-1){
+                            currentOwnerIdx = 0;
+                            firstRound = false;
+                        }
+                        continue;
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
             try {
                 clientSocket = new Socket(ownerIp, ownerPort);
@@ -79,8 +120,20 @@ public class RequestFileHandler implements Runnable{
             if (file.length() == fileSize)
             {
                 System.out.println("File " + fileName + " Was received successfully from owner " + ownerPort);
+                try {
+                    new RegisterRequest(ClientMain.serverIp, ClientMain.registerServerPort,
+														ClientMain.myIp, ClientMain.myPort,
+														new ArrayList<>(Arrays.asList(fileName))).register();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 return;
             }
+            if(currentOwnerIdx == peers.size()-1){
+                currentOwnerIdx = 0;
+                firstRound = false;
+            }
+
         }
         System.out.println("Failed to receive  " + fileName );
 

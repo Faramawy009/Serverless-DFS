@@ -1,8 +1,10 @@
-f1;localhost:1235,localhost:1237
-f8;localhost:1238
-f6;localhost:1238
-f5;localhost:1238
-f4;localhost:1236
+f8;localhost:1235,localhost:1236,localhost:1238
+f6;localhost:1235,localhost:1238
+f5;localhost:1237,localhost:1238,localhost:1236
+f4;localhost:1236,localhost:1239
 f3;localhost:1235,localhost:1236,localhost:1237
-f2;localhost:1235
+f2;localhost:1235,localhost:1237,localhost:1239
+f1;localhost:1235,localhost:1237,localhost:1238
+f13;localhost:1235,localhost:1239
+f11;localhost:1239
 

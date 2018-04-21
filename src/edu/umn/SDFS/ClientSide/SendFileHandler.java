@@ -35,6 +35,18 @@ public class SendFileHandler implements Runnable{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if(filePath.equals("getLoad")){
+            OutputStream outToServer = null;
+            try {
+                outToServer = clientSocket.getOutputStream();
+                DataOutputStream out = new DataOutputStream(outToServer);
+                out.writeUTF(""+(Thread.activeCount()-4));
+                clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
         Path path = Paths.get(homeFolder + "/" + filePath);
         File file = path.toFile();
         if (!file.exists()){
