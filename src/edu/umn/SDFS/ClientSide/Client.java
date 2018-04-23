@@ -1,15 +1,13 @@
 package edu.umn.SDFS.ClientSide;
 
-/**
- * Created by mouba005 on 4/16/18.
- */
-
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Created by mouba005 on 4/16/18.
  */
+//An object that contains the client ip and ports for registering which files
+//This client has, and on which port can we reach that file.
 public class Client implements Serializable{
     private String ip;
     private int sendFilePort;

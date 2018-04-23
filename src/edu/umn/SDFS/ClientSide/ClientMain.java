@@ -99,6 +99,14 @@ public class ClientMain {
 			return load;
 		}
 
+		//This function downloads a requested file by first asking the tracking server
+		//For the owners, and then iterating over those owners from lowest latency
+		//To highest latency possibly in two passes
+		//The first pass we ask for the load of the peer before requesting the download
+		//If the peer is below a certain cutoff (2 ongoing uploads/downloads) We send the download request
+		//Otherwise we go to the next peer
+		//In the second pass we don't care about the load, just get the file from the lowest
+		//Latency peer if it is still available, then try the higher latency...
     public static void download(String fileName, ArrayList<Client> owners) throws Exception {
 			if (owners.contains(myself)) {
 				System.out.println("local copy of the file " + fileName + " exists");
@@ -143,7 +151,7 @@ public class ClientMain {
 							hashedOwners.remove(peers.get(peerIndex));
 						}
 						if(peerLoad>2) {
-							System.out.println("peer " + ownerId + " overloaded, retrying to get  the file: " + fileName + " from next owner will get back to this peer if other peers fail...");
+							System.out.println("peer " + ownerId + " overloaded, retrying to get  the file: " + fileName + " from next owner, will get back to this peer if other peers fail...");
 						}
 					} else {
 						Socket clientSocket = null;
@@ -241,7 +249,6 @@ public class ClientMain {
     public static void main(String args[]) throws Exception{
 
         Scanner sc = new Scanner(System.in);
-
         System.out.println("Please enter client id");
 
         /* Setting up receiving port numbers based on the client id and the predefined port bases */
@@ -271,7 +278,9 @@ public class ClientMain {
 				}
 
         System.out.println("Getting peers latencies... \n");
-        LatencyReader.readPeerLatencies("src/Clients/Latencies", myId);
+				//This function reads the latency file to figure out the order of peer in terms
+				//Of how close they're to me
+				LatencyReader.readPeerLatencies("src/Clients/Latencies", myId);
         //Start the thread that listens for download file requests from other clients
         new Thread(new ClientListener(mySendFilePort)).start();
         //start the thread that listens for getLoad requests from other clients

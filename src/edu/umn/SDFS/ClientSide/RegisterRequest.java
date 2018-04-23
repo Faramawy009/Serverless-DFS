@@ -12,7 +12,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 /**
- * Created by mouba005 on 4/16/18.
+ * Created by elfar009 on 4/16/18.
  *
  * This class sends a registration request to the tracking server from the client
  * When the client starts, this request contains all the files that the client has
@@ -45,8 +45,6 @@ public class RegisterRequest {
 							counter++;
 							Thread.sleep(5000);
 					}
-
-
 			} while(!dataArrived);
 			socket.close();
     }

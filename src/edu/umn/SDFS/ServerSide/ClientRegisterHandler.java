@@ -18,9 +18,6 @@ import java.util.Arrays;
  * Created by mouba005 on 4/16/18.
  */
 public class ClientRegisterHandler implements Runnable{
-    /*
-     * registerMsg is of the form ip;socket;f1,f2,f3....
-     */
     private Socket clientSocket;
     public ClientRegisterHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;

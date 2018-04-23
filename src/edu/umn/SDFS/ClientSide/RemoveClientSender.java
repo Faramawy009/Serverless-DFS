@@ -8,7 +8,8 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 import static edu.umn.SDFS.ClientSide.ClientMain.serverIp;
-
+//This class allows each peer to send a request to the tracking server
+//To remove another peer from its data in case that peer is offline.
 public class RemoveClientSender implements Runnable{
 	private Client clientToRemove;
 
