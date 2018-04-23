@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1e25778-76bd-419a-a34a-ab84b5f9c05b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/Client.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/Client.java" />
       <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/DownloadObject.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/DownloadObject.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/Ownership.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/Ownership.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/RegisterRequest.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/RegisterRequest.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/RemoveClientSender.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/RemoveClientSender.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/RequestFileHandler.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ServerSide/ClientRegisterHandler.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ServerSide/ClientRegisterHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ServerSide/SaveDBThread.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ServerSide/ServerDB.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ServerSide/ServerDB.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ServerSide/ServerMain.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ServerSide/ServerMain.java" />
     </list>
     <ignored path="Serverless_DFS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -131,8 +121,8 @@
       <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="250" column="44" lean-forward="false" selection-start-line="250" selection-start-column="44" selection-end-line="250" selection-end-column="44" />
+            <state relative-caret-position="486">
+              <caret line="251" column="72" lean-forward="false" selection-start-line="251" selection-start-column="72" selection-end-line="251" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -628,12 +618,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1523900015594</updated>
-      <workItem from="1524100810458" duration="65650000" />
+      <workItem from="1524100810458" duration="65724000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65650000" />
+    <option name="totallyTimeSpent" value="65724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-4" width="1920" height="1084" extended-state="6" />
@@ -1095,8 +1085,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="250" column="44" lean-forward="false" selection-start-line="250" selection-start-column="44" selection-end-line="250" selection-end-column="44" />
+        <state relative-caret-position="486">
+          <caret line="251" column="72" lean-forward="false" selection-start-line="251" selection-start-column="72" selection-end-line="251" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

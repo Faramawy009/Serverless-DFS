@@ -249,7 +249,7 @@ public class ClientMain {
     public static void main(String args[]) throws Exception{
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter client id");
+        System.out.println("Please enter client id from 1 to 5 inclusive");
 
         /* Setting up receiving port numbers based on the client id and the predefined port bases */
 			  myId = Integer.parseInt(sc.nextLine());
