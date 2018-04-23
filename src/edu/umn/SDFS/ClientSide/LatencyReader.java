@@ -22,7 +22,7 @@ public class LatencyReader {
 		@Override
 		public int compareTo(Object o) {
 			ClientLatency other = (ClientLatency) o;
-			return this.latency - ((ClientLatency) o).latency;
+			return this.latency - other.latency;
 		}
 	}
 
@@ -37,15 +37,14 @@ public class LatencyReader {
 		for(int i=0; i<ClientMain.numPeers-1; i++) {
 			peerLatencies.add(new ClientLatency(peers.get(i), Integer.parseInt(peerLatenciesStrings.get(i))));
 		}
-//		peers.sort(Comparator.comparingInt(item -> peerLatencies.indexOf(item)));
 		Collections.sort(peerLatencies);
 		peers.clear();
 		for(ClientLatency cl: peerLatencies) {
 			peers.add(cl.c);
 		}
-		System.out.println("Hello I am client of port " + ClientMain.myPort + " And these are the closest clients to me: ");
+		System.out.println("Hello I am client of id " + ClientMain.myId + " And these are the closest clients to me: ");
 		for(Client c:peers) {
-			System.out.println(c.getPort());
+			System.out.println(c.getsendFilePort() - ClientMain.sendFilePortBase);
 		}
 	}
 }

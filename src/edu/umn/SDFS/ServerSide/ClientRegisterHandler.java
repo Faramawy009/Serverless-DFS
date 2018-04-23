@@ -5,9 +5,11 @@ package edu.umn.SDFS.ServerSide;
  */
 
 import edu.umn.SDFS.ClientSide.Client;
+import edu.umn.SDFS.ClientSide.Ownership;
 
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,30 +28,16 @@ public class ClientRegisterHandler implements Runnable{
 
     @Override
     public void run() {
-        DataInputStream in = null;
+        Ownership ownership = null;
         try {
-            in = new DataInputStream(clientSocket.getInputStream());
-        } catch (IOException e) {
+            ObjectInputStream inFromClient = new ObjectInputStream(clientSocket.getInputStream());
+            ownership = (Ownership)inFromClient.readObject();
+            clientSocket.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        String registerMsg = null;
-        try {
-            registerMsg = in.readUTF();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String[] msgElements = registerMsg.split(";");
-        if (msgElements.length != 3) {
-            System.out.println("invalid registration msg!");
-            return;
-        }
-        Client client = new Client(msgElements[0], Integer.parseInt(msgElements[1]));
-        String[] files  = msgElements[2].split(",");
-        ServerDB.registerClient(client, new ArrayList<>(Arrays.asList(files)));
-//        for (int i=0; i < files.length; i++){
-//            System.out.println(files[i]);
-//            ServerDB.insert(files[i], client);
-//        }
+        if (ownership != null)
+            ServerDB.updateClient(ownership.getC(), ownership.getFiles());
     }
 }
 

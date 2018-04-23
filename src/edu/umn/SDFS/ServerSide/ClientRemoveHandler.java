@@ -4,6 +4,7 @@ import edu.umn.SDFS.ClientSide.Client;
 
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 
 public class ClientRemoveHandler implements Runnable{
@@ -15,24 +16,13 @@ public class ClientRemoveHandler implements Runnable{
 
 		@Override
 		public void run() {
-			DataInputStream in = null;
+    	Client toRemove = null;
 			try {
-				in = new DataInputStream(clientSocket.getInputStream());
-			} catch (IOException e) {
+				ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
+				toRemove = (Client)in.readObject();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			String clientToRemove = null;
-			try {
-				clientToRemove = in.readUTF();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String[] clientElements = clientToRemove.split(";");
-			if (clientElements.length != 2) {
-				System.out.println("invalid client sent!");
-				return;
-			}
-			Client client = new Client(clientElements[0], Integer.parseInt(clientElements[1]));
-			ServerDB.removeInactiveClient(client);
+			ServerDB.removeInactiveClient(toRemove);
 		}
 }

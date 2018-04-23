@@ -5,6 +5,8 @@ package edu.umn.SDFS.ClientSide;
  */
 
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -16,58 +18,37 @@ import java.util.ArrayList;
  * When the client starts, this request contains all the files that the client has
  */
 public class RegisterRequest {
-    String serverIp;
-    int serverPort;
-    String clientIp;
-    int clientPort;
-    ArrayList<String> fileNames;
-
-    public RegisterRequest(String serverIp, int serverPort, String clientIp, int clientPort, ArrayList<String> fileNames) {
-        this.serverIp = serverIp;
-        this.serverPort = serverPort;
-        this.clientIp = clientIp;
-        this.clientPort = clientPort;
-        this.fileNames = fileNames;
-    }
-
-    public void register() throws Exception{
-        StringBuilder registerMsg = new StringBuilder();
-        registerMsg.append(clientIp+";"+Integer.toString(clientPort)+";");
-        for(String fileName : fileNames){
-            registerMsg.append(fileName+",");
-        }
-        // delete extra ","
-        registerMsg.deleteCharAt(registerMsg.length()-1);
-
-
-        Socket socket = null;
-        boolean dataArrived;
-        do{
-            dataArrived = true;
-            try {
-                socket = new Socket(serverIp, serverPort);
-                OutputStream outToServer = socket.getOutputStream();
-                DataOutputStream out = new DataOutputStream(outToServer);
-                out.writeUTF(registerMsg.toString());
-            } catch (Exception e) {
-                dataArrived = false;
-                System.out.println("Server offline, retrying to register again in 5 seconds...");
-                Thread.sleep(5000);
-            }
-
-        } while(!dataArrived);
-        socket.close();
+    public static void register() throws Exception{
+			Socket socket = null;
+			boolean dataArrived;
+			int counter = 1;
+			do{
+					dataArrived = true;
+					try {
+							socket = new Socket(ClientMain.serverIp, ClientMain.registerServerPort);
+							ClientMain.fileNames.clear();
+							File folder = new File(ClientMain.homeFolder);
+							File[] listOfFiles = folder.listFiles();
+							for(File f: listOfFiles) {
+								ClientMain.fileNames.add(f.getName());
+							}
+							Ownership downloadObject = new Ownership(ClientMain.myself, ClientMain.fileNames);
+							ObjectOutputStream objectOutput = new ObjectOutputStream(socket.getOutputStream());
+							objectOutput.writeObject(downloadObject);
+					} catch (Exception e) {
+							dataArrived = false;
+							if(counter == 5) {
+								System.out.println("Server offline, Please try again later...");
+								return;
+							}
+							System.out.println("Trial " + counter + " out of 5 --- Server offline, retrying to update list again in 5 seconds...");
+							counter++;
+							Thread.sleep(5000);
+					}
 
 
-//        try {
-//            Socket socket = new Socket(serverIp, serverPort);
-//            OutputStream outToServer = socket.getOutputStream();
-//            DataOutputStream out = new DataOutputStream(outToServer);
-//            out.writeUTF(registerMsg.toString());
-//            socket.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+			} while(!dataArrived);
+			socket.close();
     }
 }
 

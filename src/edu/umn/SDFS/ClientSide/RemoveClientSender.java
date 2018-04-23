@@ -3,16 +3,17 @@ package edu.umn.SDFS.ClientSide;
 import edu.umn.SDFS.ServerSide.ServerMain;
 
 import java.io.DataOutputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
 import static edu.umn.SDFS.ClientSide.ClientMain.serverIp;
 
 public class RemoveClientSender implements Runnable{
-	private String clientToRemove;
+	private Client clientToRemove;
 
-	public RemoveClientSender(String ip, int port) {
-		this.clientToRemove = ip+";"+port;
+	public RemoveClientSender(Client clientToRemove) {
+		this.clientToRemove = clientToRemove;
 	}
 
 	@Override
@@ -20,9 +21,8 @@ public class RemoveClientSender implements Runnable{
 		Socket socket = null;
 		try {
 			socket = new Socket(serverIp, ServerMain.removeClientServerPort);
-			OutputStream outToServer = socket.getOutputStream();
-			DataOutputStream out = new DataOutputStream(outToServer);
-			out.writeUTF(clientToRemove);
+			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+			out.writeObject(clientToRemove);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

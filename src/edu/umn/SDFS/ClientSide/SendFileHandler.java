@@ -35,37 +35,24 @@ public class SendFileHandler implements Runnable{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(filePath.equals("getLoad")){
-            OutputStream outToServer = null;
-            try {
-                outToServer = clientSocket.getOutputStream();
-                DataOutputStream out = new DataOutputStream(outToServer);
-                out.writeUTF(""+(Thread.activeCount()-4));
-                clientSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return;
-        }
         Path path = Paths.get(homeFolder + "/" + filePath);
         File file = path.toFile();
         if (!file.exists()){
             System.out.println("requested file doesn't exist!");
             return;
         }
-        int fileSize = toIntExact(file.length());
         byte[] buffer = new byte[0];
         try {
             buffer = Files.readAllBytes(path);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        DownloadObject downloadObject = new DownloadObject(fileSize, buffer);
         try {
+            DownloadObject downloadObject = new DownloadObject(ClientMain.computeCheckSum(buffer), buffer);
             ObjectOutputStream objectOutput = new ObjectOutputStream(clientSocket.getOutputStream());
             objectOutput.writeObject(downloadObject);
             System.out.println("File " + filePath + " Was sent successfully to client of port " +clientSocket.getLocalPort());
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
