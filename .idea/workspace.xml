@@ -2,7 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1e25778-76bd-419a-a34a-ab84b5f9c05b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java" afterPath="$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/Clients/C1/f2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/Clients/C3/f2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/Client.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/Client.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$1.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$2.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$2.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$3.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$3.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$4.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain$4.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/ClientMain.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/DownloadObject.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/DownloadObject.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/RegisterRequest.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/RegisterRequest.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/RemoveClientSender.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ClientSide/RemoveClientSender.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ServerSide/ClientRegisterHandler.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ServerSide/ClientRegisterHandler.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ServerSide/SaveDBThread.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ServerSide/ServerDB.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ServerSide/ServerDB.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ServerSide/ServerMain.class" afterPath="$PROJECT_DIR$/out/production/Serverless_DFS/edu/umn/SDFS/ServerSide/ServerMain.class" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/C1/f2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/C3/f2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C1/f1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C1/f13" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C1/f5" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C1/f8" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C2/f3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C2/f8" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C3/f1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C3/f4" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C3/f5" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C3/f6" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C4/f1" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C4/f3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C4/f4" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C4/f8" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C5/f13" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C5/f2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/Clients/ClientsFilesBackup/C5/f4" afterPath="" />
     </list>
     <ignored path="Serverless_DFS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -121,7 +155,7 @@
       <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
+            <state relative-caret-position="1548">
               <caret line="251" column="72" lean-forward="false" selection-start-line="251" selection-start-column="72" selection-end-line="251" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -241,7 +275,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1288" />
+    <option name="x" value="53" />
     <option name="y" value="-4" />
     <option name="width" value="1227" />
     <option name="height" value="1028" />
@@ -277,6 +311,12 @@
               <item name="Serverless_DFS" type="b2602c69:ProjectViewProjectNode" />
               <item name="Serverless_DFS" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Serverless_DFS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Serverless_DFS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Clients" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Serverless_DFS" type="b2602c69:ProjectViewProjectNode" />
@@ -618,16 +658,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1523900015594</updated>
-      <workItem from="1524100810458" duration="65724000" />
+      <workItem from="1524100810458" duration="67578000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65724000" />
+    <option name="totallyTimeSpent" value="67578000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-4" width="1920" height="1084" extended-state="6" />
-    <editor active="true" />
+    <frame x="53" y="-4" width="1227" height="1028" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -637,13 +676,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2822086" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2781186" sideWeight="0.9145833" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29501083" sideWeight="0.9145833" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15885417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24857375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -928,7 +967,7 @@
         <state relative-caret-position="144">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -980,7 +1019,7 @@
         <state relative-caret-position="427">
           <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -990,7 +1029,7 @@
         <state relative-caret-position="558">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1085,7 +1124,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/umn/SDFS/ClientSide/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
+        <state relative-caret-position="1548">
           <caret line="251" column="72" lean-forward="false" selection-start-line="251" selection-start-column="72" selection-end-line="251" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
