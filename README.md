@@ -45,12 +45,15 @@ notified using the UI.
 ### How to run:
 This project was developed using Intellij IDEA. To run any of the 3 versions, follow the steps
 below:
+
 1- Open the project using Intellij IDE
-2- Run the following file 5 times with 5 different server ID’s ranging from 1 to 5:
-src/edu/umn/SDFS/ClientSide/ClientMain
-3- Once all the clients are up, it will print the port on which it’s listening for client requests and it
-will also print the peers in order of latency
+
+2- Run the following file 5 times with 5 different server ID’s ranging from 1 to 5: src/edu/umn/SDFS/ClientSide/ClientMain
+
+3- Once all the clients are up, it will print the port on which it’s listening for client requests and it will also print the peers in order of latency
+
 4- Run the following file to start a server : src/edu/umn/SDFS/ServerSide/ServerMain
-5- Client's UI has a list of commands for interaction with other clients and server. The server has
-an option of listing the database by entering 'd'
+
+5- Client's UI has a list of commands for interaction with other clients and server. The server has an option of listing the database by entering 'd'
+
 6- The home directory of each client can be found in src/Clients/C<client-id>
