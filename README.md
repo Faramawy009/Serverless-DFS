@@ -43,8 +43,7 @@ requesting client will retry to send the request five times. If it keeps failing
 notified using the UI.
 
 ### How to run:
-This project was developed using Intellij IDEA. To run any of the 3 versions, follow the steps
-below:
+This project was developed using Intellij IDEA. To run, follow the steps below:
 
 1- Open the project using Intellij IDE
 
